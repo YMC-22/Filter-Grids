@@ -457,7 +457,9 @@ ymcHooks.addAction('ymc/grid/cancel_fetch', function(filter) {
 ```
 
 `ymcHooks.doAction('ymc/grid/before_update', container);`
+
 `ymcHooks.doAction('ymc/grid/before_update_filter_id', container);`
+
 `ymcHooks.doAction('ymc/grid/before_update_filter_id_instance_index', container);`
 
 Fires just before grid data is rendered into the DOM.
@@ -473,7 +475,9 @@ ymcHooks.addAction('ymc/grid/before_update_72', function(container) {
 ```
 
 `ymcHooks.doAction('ymc/grid/after_update', data, container);`
+
 `ymcHooks.doAction('ymc/grid/after_update_filter_id', data, container);`
+
 `ymcHooks.doAction('ymc/grid/after_update_filter_id_instance_index', data, container);`
 
 Triggered immediately after the DOM has been updated.
@@ -491,7 +495,9 @@ ymcHooks.addAction('ymc/grid/after_update', function(data, container) {
 ```
 
 `ymcHooks.doAction('ymc/grid/after_complete', response.status, container);`
+
 `ymcHooks.doAction('ymc/grid/after_complete_filter_id', response.status, container);`
+
 `ymcHooks.doAction('ymc/grid/after_complete_filter_id_instance_index', response.status, container);`
 
 Fires when the full grid update cycle is complete.
@@ -543,6 +549,7 @@ ymcHooks.addAction('ymc/popup/after_open_72', function(popup, data) {
 
 #### Preloader
 `ymcHooks.applyFilters('ymc/grid/preloader', defaultPreloader);`
+
 `ymcHooks.applyFilters('ymc/grid/preloader_filter_id', defaultPreloader);`
 
 This filter allows you to customize the loading spinner image used during AJAX content loading in the plugin.
