@@ -1,0 +1,208 @@
+/* ---------------------------------------
+	Typography
+--------------------------------------- */
+$fa-font-path: "../fonts";
+$fa-font-display: swap;
+
+
+// Custom fonts
+
+// Roboto
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 200;
+  font-display: $fa-font-display;
+  src: url('#{$fa-font-path}/roboto/Roboto-ExtraLight.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: $fa-font-display;
+  src: url('#{$fa-font-path}/roboto/Roboto-Light.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: $fa-font-display;
+  src: url('#{$fa-font-path}/roboto/Roboto-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: $fa-font-display;
+  src: url('#{$fa-font-path}/roboto/Roboto-Medium.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 600;
+  font-display: $fa-font-display;
+  src: url('#{$fa-font-path}/roboto/Roboto-SemiBold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: $fa-font-display;
+  src: url('#{$fa-font-path}/roboto/Roboto-Bold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 800;
+  font-display: $fa-font-display;
+  src: url('#{$fa-font-path}/roboto/Roboto-ExtraBold.woff2') format('woff2');
+}
+
+
+// Poppins
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 200;
+  font-display: $fa-font-display;
+  src: url('#{$fa-font-path}/poppins/Poppins-ExtraLight.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 300;
+  font-display: $fa-font-display;
+  src: url('#{$fa-font-path}/poppins/Poppins-Light.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-display: $fa-font-display;
+  src: url('#{$fa-font-path}/poppins/Poppins-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: $fa-font-display;
+  src: url('#{$fa-font-path}/poppins/Poppins-Medium.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-display: $fa-font-display;
+  src: url('#{$fa-font-path}/poppins/Poppins-SemiBold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-display: $fa-font-display;
+  src: url('#{$fa-font-path}/poppins/Poppins-Bold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 800;
+  font-display: $fa-font-display;
+  src: url('#{$fa-font-path}/poppins/Poppins-ExtraBold.woff2') format('woff2');
+}
+
+// OpenSans
+@font-face {
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: $fa-font-display;
+  src: url('#{$fa-font-path}/open-sans/OpenSans-Light.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: $fa-font-display;
+  src: url('#{$fa-font-path}/open-sans/OpenSans-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: $fa-font-display;
+  src: url('#{$fa-font-path}/open-sans/OpenSans-Medium.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: $fa-font-display;
+  src: url('#{$fa-font-path}/open-sans/OpenSans-SemiBold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: $fa-font-display;
+  src: url('#{$fa-font-path}/open-sans/OpenSans-Bold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: 800;
+  font-display: $fa-font-display;
+  src: url('#{$fa-font-path}/open-sans/OpenSans-ExtraBold.woff2') format('woff2');
+}
+
+// Montserrat
+@font-face {
+  font-family: 'Montserrat';
+  src: url('#{$fa-font-path}/montserrat/Montserrat-ExtraLight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('#{$fa-font-path}/montserrat/Montserrat-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('#{$fa-font-path}/montserrat/Montserrat-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('#{$fa-font-path}/montserrat/Montserrat-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('#{$fa-font-path}/montserrat/Montserrat-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('#{$fa-font-path}/montserrat/Montserrat-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('#{$fa-font-path}/montserrat/Montserrat-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+

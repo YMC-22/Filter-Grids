@@ -1,0 +1,91 @@
+Чтобы обработать REST API-запросы от фильтра на стороне PHP (WordPress), тебе нужно зарегистрировать собственный REST endpoint через register_rest_route() и описать, как он будет:
+
+принимать параметры (фильтры),
+
+выполнять WP-запрос (WP_Query),
+
+возвращать данные в формате JSON.
+
+1. Зарегистрируй свой REST API маршрут:
+add_action('rest_api_init', function () {
+    register_rest_route('ymc/v1', '/filter', [
+        'methods'  => 'GET',
+        'callback' => 'ymc_handle_filter_request',
+        'permission_callback' => '__return_true', // или добавить проверку, если нужно
+    ]);
+});
+
+2. Напиши обработчик ymc_handle_filter_request
+function ymc_handle_filter_request($request) {
+    $params = $request->get_params();
+
+    // Поддерживаемые параметры фильтрации
+    $category = sanitize_text_field($params['category'] ?? '');
+    $tag      = sanitize_text_field($params['tag'] ?? '');
+    $author   = intval($params['author'] ?? 0);
+
+    // WP_Query аргументы
+    $args = [
+        'post_type'      => 'post',
+        'posts_per_page' => 10,
+        'post_status'    => 'publish',
+    ];
+
+    if ($category) {
+        $args['category_name'] = $category;
+    }
+
+    if ($tag) {
+        $args['tag'] = $tag;
+    }
+
+    if ($author) {
+        $args['author'] = $author;
+    }
+
+    $query = new WP_Query($args);
+
+    $posts = [];
+
+    if ($query->have_posts()) {
+        foreach ($query->posts as $post) {
+            $posts[] = [
+                'id'      => $post->ID,
+                'title'   => get_the_title($post),
+                'excerpt' => get_the_excerpt($post),
+                'link'    => get_permalink($post),
+                'image'   => get_the_post_thumbnail_url($post, 'medium')
+            ];
+        }
+    }
+
+    return rest_ensure_response($posts);
+}
+
+Пример запроса с фронта:
+fetch('/wp-json/ymc/v1/filter?category=news&tag=tech')
+
+Ты можешь протестировать этот endpoint вручную, перейдя в браузере на:
+https://your-site.com/wp-json/ymc/v1/filter?category=news
+
+Хук rest_api_init в WordPress используется для регистрации своих REST API маршрутов (routes),
+когда инициализируется REST API. Это ключевая точка входа, если ты хочешь, чтобы твой плагин или
+тема обрабатывали REST-запросы (например, от JS-фильтров на фронте).
+
+add_action('rest_api_init', function () {
+    register_rest_route('ymc/v1', '/filter', [
+        'methods'  => 'GET',
+        'callback' => 'ymc_filter_handler',
+        'permission_callback' => '__return_true',
+    ]);
+});
+
+| Аргумент              | Описание                                                 |
+| --------------------- | -------------------------------------------------------- |
+| `ymc/v1`              | Пространство имён (`namespace`) и версия API             |
+| `/filter`             | Сегмент пути запроса (`/wp-json/ymc/v1/filter`)          |
+| `methods`             | Методы HTTP-запроса: `'GET'`, `'POST'`, массив и т.д.    |
+| `callback`            | Функция, которая будет вызываться при запросе            |
+| `permission_callback` | Проверка прав доступа (в проде лучше не `__return_true`) |
+
+GET /wp-json/ymc/v1/filter
