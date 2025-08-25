@@ -14,7 +14,11 @@ use YMCFilterGrids\FG_Autoloader;
 use YMCFilterGrids\admin\{FG_Backend_Scripts, FG_Post_Type, FG_Meta_Boxes, FG_Save_Meta_Boxes, FG_Ajax_Admin, FG_License_Manager, FG_General_Settings};
 use YMCFilterGrids\frontend\{FG_Frontend_Scripts, FG_Shortcodes, FG_Ajax_Responder};
 
-
+/**
+ * YMC_Filter_Grids Class
+ *
+ * @since 3.0.0
+ */
 final class YMC_Filter_Grids {
 
 	/**
