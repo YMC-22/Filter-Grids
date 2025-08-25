@@ -21,3 +21,12 @@ git push origin main
 git rm --cached ymc-smart-filters.php
 git commit -m "Remove ymc-smart-filters.php from repo"
 git push origin main
+
+---
+
+Чтобы реально убрать их из индекса (чтобы они не пушились), нужно сделать:
+git rm -r --cached ymc2
+git rm -r --cached includes
+
+
+
