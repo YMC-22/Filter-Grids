@@ -1002,3 +1002,5 @@ function custom_query_modifier( $args ) {
 - Fixed multiple bugs from previous versions (pagination, sliders, masonry layout).  
 
 
+
+
