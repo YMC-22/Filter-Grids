@@ -440,7 +440,7 @@ These hooks allow you to integrate custom logic at different stages of the gridâ
 - `filter_id`: unique ID of the filter (e.g., 72)  Shortcode tab [ymc_filter id='72'].
 - `instance_index`: instance number of this filter on the page.
 
-`ymcHooks.doAction('ymc/grid/cancel_fetch', filter);` 
+- `ymcHooks.doAction('ymc/grid/cancel_fetch', filter);` 
 
 Triggered before a fetch request is made. Useful to cancel or modify the behavior.
 
