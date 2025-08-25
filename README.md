@@ -1,4 +1,5 @@
-![This is an image](/Logo_3.0.0.png)
+<img src="/Logo_3.0.0.png" alt="Filter & Grids Logo" width="250" />
+
 
 # YMC Filter Grids 
 
