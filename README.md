@@ -510,18 +510,18 @@ ymcHooks.addAction('ymc/grid/after_complete', function(status, container) {
 ```
 
 #### Popup
-- `ymcHooks.doAction('ymc/popup/before_open', popup);`
-- `ymcHooks.doAction('ymc/popup/before_open_filter_id, popup);`
-- `ymcHooks.doAction('ymc/popup/after_open', popup, data);`
-- `ymcHooks.doAction('ymc/popup/after_open_filter_id, popup, data);`
+`ymcHooks.doAction('ymc/popup/before_open', popup);`
+`ymcHooks.doAction('ymc/popup/before_open_filter_id, popup);`
+`ymcHooks.doAction('ymc/popup/after_open', popup, data);`
+`ymcHooks.doAction('ymc/popup/after_open_filter_id, popup, data);`
 
 These hooks are triggered during the lifecycle of opening a popup in the system. They allow you to run custom code at specific moments before and after the popup opens.
 
-- `ymcHooks.doAction('ymc/popup/before_open', popup);`
+`ymcHooks.doAction('ymc/popup/before_open', popup);`
 
 Fires before the popup starts opening, passing the popup DOM element as an argument.
 
-- `ymcHooks.doAction('ymc/popup/after_open', popup, data);`
+`ymcHooks.doAction('ymc/popup/after_open', popup, data);`
 
 Fires immediately after the popup has been opened and content has been loaded.
 
@@ -538,8 +538,8 @@ ymcHooks.addAction('ymc/popup/after_open_72', function(popup, data) {
 ```
 
 #### Preloader
-- `ymcHooks.applyFilters('ymc/grid/preloader', defaultPreloader);`
-- `ymcHooks.applyFilters('ymc/grid/preloader_filter_id', defaultPreloader);`
+`ymcHooks.applyFilters('ymc/grid/preloader', defaultPreloader);`
+`ymcHooks.applyFilters('ymc/grid/preloader_filter_id', defaultPreloader);`
 
 This filter allows you to customize the loading spinner image used during AJAX content loading in the plugin.
 Returns a string containing the full path or URL to the custom preloader image.
