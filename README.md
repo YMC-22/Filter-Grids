@@ -1,9 +1,5 @@
 <img src="/Logo_3.0.0.png" alt="Filter & Grids Logo" width="250" />
 
-
-
-
-
 # YMC Filter Grids 
 
 **Filter & Grids** is a powerful and flexible WordPress plugin that allows you to easily filter and display your posts, custom post types, and other content in beautifully designed grid layouts.  
