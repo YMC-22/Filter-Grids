@@ -27,6 +27,15 @@ git push origin main
 Чтобы реально убрать их из индекса (чтобы они не пушились), нужно сделать:
 git rm -r --cached ymc2
 git rm -r --cached includes
+---
+Если хочешь удалить папку с содержимым из индекса (чтобы она исчезла из репозитория, но осталась у тебя локально), то команда будет такой:
+git rm -r --cached ymc2/dir/my-dir
+git commit -m "Remove folder ymc2/dir/my-dir from repo"
+git push origin main
 
+Разбор:
+git rm — удаление из индекса (стейджа).
+-r — рекурсивно (для папок).
+--cached — убрать только из репозитория, но не трогать локальные файлы.
 
-
+git reset HEAD ymc2/src/helper/
