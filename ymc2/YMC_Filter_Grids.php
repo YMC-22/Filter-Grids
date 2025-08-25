@@ -208,7 +208,7 @@ final class YMC_Filter_Grids {
 			FG_Meta_Boxes::init();
 			FG_Save_Meta_Boxes::init();
 			FG_General_Settings::init();
-			FG_License_Manager::init();
+			// FG_License_Manager::init();
 		}
 
 	}
