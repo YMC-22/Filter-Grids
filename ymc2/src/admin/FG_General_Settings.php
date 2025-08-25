@@ -79,15 +79,14 @@ class FG_General_Settings {
             <div class="settings-inner">
                 <h2 class="page-title-settings">
                 <span class="dashicons dashicons-admin-generic"></span>
-                <?php esc_html_e('General Settings', 'ymc-smart-filters'); ?></h2>
+                <?php esc_html_e('Settings', 'ymc-smart-filters'); ?></h2>
                 <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
 		            <?php wp_nonce_field('plugin_settings_save'); ?>
                     <input type="hidden" name="action" value="plugin_settings_save">
                     <div class="form-group">
                         <div class="sub-headline"><?php esc_html_e('Legacy Mode', 'ymc-smart-filters'); ?></div>
                         <div class="field-description">
-	                        <?php esc_html_e('Activates the legacy version of the plugin for compatibility with your theme or other plugins.
-                            Not recommended for new sites.', 'ymc-smart-filters'); ?>
+	                        <?php esc_html_e('Activates the legacy version of the plugin for compatibility with your theme or other plugins.', 'ymc-smart-filters'); ?>
                         </div>
                         <input class="form-checkbox" name="ymc_plugin_legacy_is" id="ymc_plugin_legacy_is" type="checkbox" value="yes">
                         <label class="form-label" for="ymc_plugin_legacy_is">
@@ -97,9 +96,10 @@ class FG_General_Settings {
                     <div class="form-group">
                         <div class="sub-headline"><?php esc_html_e('JavaScript Filter API', 'ymc-smart-filters'); ?></div>
                         <div class="field-description">
-		                    <?php esc_html_e('Enable dynamic post filtering using JavaScript. 
-		                    Enable dynamic post filtering using JavaScript. When enabled, the filter grid will update posts 
-		                    asynchronously without reloading the page.', 'ymc-smart-filters'); ?>
+		                    <?php echo wp_kses_post('Enable dynamic post filtering using JavaScript. 
+		                    Enable dynamic post filtering using JavaScript.<br> When enabled, the filter grid will update posts 
+		                    asynchronously without reloading the page. More info: 
+		                    <a href="https://github.com/YMC-22/Filter-Grids?tab=readme-ov-file#ymcfiltergrid-global-object-api" target="_blank">YMCFilterGrid: Global Object API</a>', 'ymc-smart-filters'); ?>
                         </div>
                         <input class="form-checkbox" type="checkbox"
                                name="ymc_fg_enable_js_filter_api"

@@ -13,7 +13,7 @@
 <div class="ymc-header-bar">
     <div class="header-bar-inner">
         <div class="title-wrap">
-            <div class="page-title page-title--groups"><?php esc_html_e('Filter & Grids Groups', 'ymc-smart-filters'); ?></div>
+            <div class="page-title page-title--groups"><?php esc_html_e('All Filters & Grids', 'ymc-smart-filters'); ?></div>
         </div>
         <div class="header-bar-actions" id="submitpost">
 		    <?php
