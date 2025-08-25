@@ -1,0 +1,156 @@
+
+### Как создать новый фильтр в YMC
+
+Архитектура в твоем проекте уже поддерживает:
+Компонент	               Назначение
+getEffectiveTermIds.js	🔗 Единая точка сбора термов со всех фильтров
+data-filter-type	    📌 Определяет, как собирать данные из DOM
+data-all-terms	        🧩 Бэкап-термы, когда ничего не выбрано
+globalSelectedTerms  	🧠 (необязательно) — трекер глобальных выборов
+updateDataParams()	    📤 Обновляет URL, параметры запроса
+fetchFilteredPosts()	🔄 Загружает отфильтрованные посты
+
+---
+Как добавить новый тип фильтра (шаги):
+Допустим, ты хочешь добавить, например, фильтр типа range (слайдер по числам), или color, или checkbox-group, или даже autocomplete.
+
+📍 Шаг 1: Указать data-filter-type на корневом элементе фильтра
+<div class="my-color-filter" data-filter-type="color" data-selection-mode="multiple" data-all-terms="[33,34,35]">
+   <!-- Внутри твой UI -->
+</div>
+
+Также следует добавить атрибут data-all-terms, чтобы в случае, если ничего не выбрано, возвращался набор бэкап-термов
+
+📍 Шаг 2: Внести логику в getEffectiveTermIds.js
+Это центр сбора термов со всех фильтров.
+Каждый фильтр должен "рассказать" о своих выбранных термах.
+
+Пример: добавим поддержку фильтра с типом color
+js
+if (filterType === 'color') {
+    const selectedColorBoxes = filter.querySelectorAll('.color-box.selected');
+    selectedTermIds = Array.from(selectedColorBoxes).map(box => Number(box.dataset.termid));
+}
+
+📍 Шаг 3: Инициализировать новый фильтр
+Создаёшь initColorFilter.js, initRangeFilter.js, и в main.js подключаешь его:
+js
+import { initColorFilter } from './filters/initColorFilter.js';
+initColorFilter();
+
+Там ты сам определяешь, как UI меняется, когда что-то выбрано, и обновляешь globalSelectedTerms, и вызываешь:
+
+js
+updateDataParams(container, {
+    terms: getEffectiveTermIds(container),
+    paged: 1
+});
+await fetchFilteredPosts(container);
+
+===================================================================
+Отличный вопрос! Чтобы добавить новый фильтр — например, range-слайдер (для цены, года, рейтинга и т.п.) — тебе нужно будет
+сделать две вещи в getEffectiveTermIds(container):
+
+1. Добавить стратегию извлечения термов
+Внутри объекта filterStrategies тебе нужно добавить новую функцию для обработки фильтра типа range:
+
+js
+const filterStrategies = {
+    dropdown: (filter) => {
+        return Array.from(
+            filter.querySelectorAll('input[type="checkbox"]:not(.js-dropdown-all-checkbox)')
+        )
+            .filter(cb => cb.checked)
+            .map(cb => Number(cb.dataset.value));
+    },
+
+    default: (filter) => {
+        return Array.from(
+            filter.querySelectorAll('.filter-button.is-active:not(.js-filter-button-all)')
+        )
+            .map(btn => Number(btn.dataset.termid));
+    },
+
+    // 🔽 Добавляем стратегию для типа range
+    range: (filter) => {
+        const minInput = filter.querySelector('input[data-role="range-min"]');
+        const maxInput = filter.querySelector('input[data-role="range-max"]');
+
+        const min = Number(minInput?.value);
+        const max = Number(maxInput?.value);
+
+        if (!isNaN(min) && !isNaN(max)) {
+            // Предположим, ты заранее знаешь, какие термы соответствуют диапазону
+            // Или получаешь их через dataset
+            const data = filter.querySelector('[data-range-terms]');
+            if (data) {
+                try {
+                    const allTerms = JSON.parse(data.dataset.rangeTerms);
+                    // фильтруем термы попадающие в диапазон
+                    return allTerms
+                        .filter(obj => obj.value >= min && obj.value <= max)
+                        .map(obj => obj.id);
+                } catch (e) {
+                    console.warn('Invalid data-range-terms JSON', e);
+                }
+            }
+        }
+        return [];
+    },
+
+    _default: () => []
+};
+
+Пример data-range-terms: HTML
+<div class="filter-range" data-filter-type="range">
+  <input type="number" data-role="range-min" />
+  <input type="number" data-role="range-max" />
+  <div data-range-terms='[
+    {"id": 101, "value": 1990},
+    {"id": 102, "value": 1995},
+    {"id": 103, "value": 2000},
+    {"id": 104, "value": 2005}
+  ]'></div>
+</div>
+
+
+2. Убедиться, что у тебя правильно указан data-filter-type="range"
+Так как ты уже проходишься по filter.dataset.filterType, это автоматически вызовет нужную стратегию, если правильно указать атрибут:
+
+<div data-filter-type="range" data-selection-mode="single">
+    <!-- твоя вёрстка с range -->
+</div>
+
+🚀 Результат
+Теперь при вызове getEffectiveTermIds(container):
+фильтры range будут правильно интерпретированы, все термы попадут в общий Set и отправятся на сервер.
+
+🧠 Рекомендация
+Если у тебя range фильтры не по термам, а по произвольным значениям (например, просто meta_query), тогда getEffectiveTermIds
+не трогай, а обрабатывай range отдельно в params.range = { min, max }.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

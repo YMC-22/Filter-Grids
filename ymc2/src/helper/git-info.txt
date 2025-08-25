@@ -1,0 +1,42 @@
+Инициализация git ---
+echo "# Filter-Grids" >> README.md
+git init
+git add README.md
+git add UPGRADE-NOTICE.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/YMC-22/Filter-Grids.git
+git push -u origin main
+
+
+
+Удалить ненужные файлы из репозитория, но оставить локально
+git rm -r --cached ymc2
+git rm -r --cached includes
+git rm --cached *.map
+git commit -m "Remove unnecessary files from repo"
+git push origin main
+---
+Удалить файл только из репозитория, но оставить локально
+git rm --cached ymc-smart-filters.php
+git commit -m "Remove ymc-smart-filters.php from repo"
+git push origin main
+
+---
+
+Чтобы реально убрать их из индекса (чтобы они не пушились), нужно сделать:
+git rm -r --cached ymc2
+git rm -r --cached includes
+---
+Если хочешь удалить папку с содержимым из индекса (чтобы она исчезла из репозитория, но осталась у тебя локально), то команда будет такой:
+git rm -r --cached ymc2/dir/my-dir
+git commit -m "Remove folder ymc2/dir/my-dir from repo"
+git push origin main
+
+Разбор:
+git rm — удаление из индекса (стейджа).
+-r — рекурсивно (для папок).
+--cached — убрать только из репозитория, но не трогать локальные файлы.
+
+Убрать целую папку из индекса
+git reset HEAD ymc2/src/helper/
