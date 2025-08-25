@@ -49,9 +49,7 @@ If necessary, you can **rollback to the previous version** of the plugin at any 
 
 ## 📚 Additional Resources
 
-- [Official Documentation](https://yourwebsite.com/docs)
-- [Migration Guide](https://yourwebsite.com/migration)
-- [Support Forum](https://yourwebsite.com/support)
+- [Official Documentation](https://github.com/YMC-22/Filter-Grids/tree/main)
 
 ---
 
