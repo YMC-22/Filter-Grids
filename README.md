@@ -510,6 +510,7 @@ ymcHooks.addAction('ymc/grid/after_complete', function(status, container) {
 ```
 
 #### Popup
+
 `ymcHooks.doAction('ymc/popup/before_open', popup);`
 `ymcHooks.doAction('ymc/popup/before_open_filter_id, popup);`
 `ymcHooks.doAction('ymc/popup/after_open', popup, data);`
