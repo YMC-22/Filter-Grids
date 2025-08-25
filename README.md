@@ -456,11 +456,9 @@ ymcHooks.addAction('ymc/grid/cancel_fetch', function(filter) {
 });
 ```
 
-`ymcHooks.doAction('ymc/grid/before_update', container);`
-
-`ymcHooks.doAction('ymc/grid/before_update_filter_id', container);`
-
-`ymcHooks.doAction('ymc/grid/before_update_filter_id_instance_index', container);`
+- `ymcHooks.doAction('ymc/grid/before_update', container);`
+- `ymcHooks.doAction('ymc/grid/before_update_filter_id', container);`
+- `ymcHooks.doAction('ymc/grid/before_update_filter_id_instance_index', container);`
 
 Fires just before grid data is rendered into the DOM.
 
@@ -474,11 +472,9 @@ ymcHooks.addAction('ymc/grid/before_update_72', function(container) {
 });
 ```
 
-`ymcHooks.doAction('ymc/grid/after_update', data, container);`
-
-`ymcHooks.doAction('ymc/grid/after_update_filter_id', data, container);`
-
-`ymcHooks.doAction('ymc/grid/after_update_filter_id_instance_index', data, container);`
+- `ymcHooks.doAction('ymc/grid/after_update', data, container);`
+- `ymcHooks.doAction('ymc/grid/after_update_filter_id', data, container);`
+- `ymcHooks.doAction('ymc/grid/after_update_filter_id_instance_index', data, container);`
 
 Triggered immediately after the DOM has been updated.
 
@@ -494,11 +490,9 @@ ymcHooks.addAction('ymc/grid/after_update', function(data, container) {
 });
 ```
 
-`ymcHooks.doAction('ymc/grid/after_complete', response.status, container);`
-
-`ymcHooks.doAction('ymc/grid/after_complete_filter_id', response.status, container);`
-
-`ymcHooks.doAction('ymc/grid/after_complete_filter_id_instance_index', response.status, container);`
+- `ymcHooks.doAction('ymc/grid/after_complete', response.status, container);`
+- `ymcHooks.doAction('ymc/grid/after_complete_filter_id', response.status, container);`
+- `ymcHooks.doAction('ymc/grid/after_complete_filter_id_instance_index', response.status, container);`
 
 Fires when the full grid update cycle is complete.
 
@@ -516,22 +510,18 @@ ymcHooks.addAction('ymc/grid/after_complete', function(status, container) {
 ```
 
 #### Popup
-
-`ymcHooks.doAction('ymc/popup/before_open', popup);`
-
-`ymcHooks.doAction('ymc/popup/before_open_filter_id, popup);`
-
-`ymcHooks.doAction('ymc/popup/after_open', popup, data);`
-
-`ymcHooks.doAction('ymc/popup/after_open_filter_id, popup, data);`
+- `ymcHooks.doAction('ymc/popup/before_open', popup);`
+- `ymcHooks.doAction('ymc/popup/before_open_filter_id, popup);`
+- `ymcHooks.doAction('ymc/popup/after_open', popup, data);`
+- `ymcHooks.doAction('ymc/popup/after_open_filter_id, popup, data);`
 
 These hooks are triggered during the lifecycle of opening a popup in the system. They allow you to run custom code at specific moments before and after the popup opens.
 
-`ymcHooks.doAction('ymc/popup/before_open', popup);`
+- `ymcHooks.doAction('ymc/popup/before_open', popup);`
 
 Fires before the popup starts opening, passing the popup DOM element as an argument.
 
-`ymcHooks.doAction('ymc/popup/after_open', popup, data);`
+- `ymcHooks.doAction('ymc/popup/after_open', popup, data);`
 
 Fires immediately after the popup has been opened and content has been loaded.
 
@@ -548,9 +538,8 @@ ymcHooks.addAction('ymc/popup/after_open_72', function(popup, data) {
 ```
 
 #### Preloader
-`ymcHooks.applyFilters('ymc/grid/preloader', defaultPreloader);`
-
-`ymcHooks.applyFilters('ymc/grid/preloader_filter_id', defaultPreloader);`
+- `ymcHooks.applyFilters('ymc/grid/preloader', defaultPreloader);`
+- `ymcHooks.applyFilters('ymc/grid/preloader_filter_id', defaultPreloader);`
 
 This filter allows you to customize the loading spinner image used during AJAX content loading in the plugin.
 Returns a string containing the full path or URL to the custom preloader image.
@@ -1011,6 +1000,5 @@ function custom_query_modifier( $args ) {
 - Extended developer API (new JS hooks, WP Query integration, custom templates).
 - Improved compatibility with WPML and other multilingual plugins.
 - Fixed multiple bugs from previous versions (pagination, sliders, masonry layout).  
-
 
 
