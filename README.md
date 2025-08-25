@@ -1,4 +1,4 @@
-![This is an image](/includes/assets/images/YMC-logos.png)
+![This is an image](/Logo_3.0.0.png)
 
 # YMC Filter Grids 
 
