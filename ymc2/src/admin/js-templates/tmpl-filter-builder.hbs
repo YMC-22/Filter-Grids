@@ -1,0 +1,27 @@
+<div class="filter-item">
+    <select class="form-select form-select--multiple {{isDisabledTax}}"
+            name="ymc_fg_filter_options[{{filterIndex}}][tax_name][]" multiple>
+        {{#if isTaxSelected}}
+            {{#each taxSelected}}
+                <option value="{{slug}}">{{label}}</option>
+            {{/each}}
+        {{else}}
+            <option class="is-disabled" value="">Taxonomy not selected</option>
+        {{/if}}
+    </select>
+
+    <select class="form-select" name="ymc_fg_filter_options[{{filterIndex}}][filter_type]">
+        {{#each filtersTypes}}
+            <option value="{{slug}}">{{label}}</option>
+        {{/each}}
+    </select>
+
+    <select class="form-select" name="ymc_fg_filter_options[{{filterIndex}}][placement]">
+    {{#each placements}}
+        <option value="{{slug}}">{{label}}</option>
+    {{/each}}
+    </select>
+
+    <button class="button button--secondary js-remove-filter" type="button">Delete</button>
+</div>
+

@@ -1,0 +1,23 @@
+Инициализация git ---
+echo "# Filter-Grids" >> README.md
+git init
+git add README.md
+git add UPGRADE-NOTICE.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/YMC-22/Filter-Grids.git
+git push -u origin main
+
+
+
+Удалить ненужные файлы из репозитория, но оставить локально
+git rm -r --cached ymc2
+git rm -r --cached includes
+git rm --cached *.map
+git commit -m "Remove unnecessary files from repo"
+git push origin main
+---
+Удалить файл только из репозитория, но оставить локально
+git rm --cached ymc-smart-filters.php
+git commit -m "Remove ymc-smart-filters.php from repo"
+git push origin main

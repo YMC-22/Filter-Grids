@@ -1,0 +1,11 @@
+{{#if isPosts}}
+    {{#each posts}}
+    <li class='list-posts__item add-post js-add-post {{is_disabled}}' data-post-id='{{id}}'>
+        <span class='post-title'>{{title}}</span> <span class='post-id'>(ID: {{id}})</span></li>
+    {{/each}}
+{{/if}}
+
+{{#if noPosts}}
+    <li class='notification notification--warning'>{{no_posts_found}}</li>
+{{/if}}
+

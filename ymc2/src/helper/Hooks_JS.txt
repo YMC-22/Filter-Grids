@@ -1,0 +1,157 @@
+ Рекомендованный стиль именования JS-хуков в проектах WordPress
+
+| Формат                   | Пример                        | Описание                                                   |
+| ------------------------ | ----------------------------- | ---------------------------------------------------------- |
+| `plugin/component/event` | `ymc/post/before_loaded_data` | 🔹 Структурно, понятно, избегает коллизий                  |
+| `plugin_event_name`      | `ymc_before_loaded_data`      | ✔️ Подходит для простых случаев                            |
+| `plugin:component:event` | `ymc:post:before_loaded_data` | ❌ Работает, но двоеточие в JS может быть запутанным        |
+| `plugin.component.event` | `ymc.post.before_loaded_data` | ⚠️ Могут быть проблемы с парсингом и путаницей с объектами |
+
+Так стоит делать:
+
+ymcHooks.doAction('ymc/post/before_loaded_data', container);
+ymcHooks.addAction('ymc/post/after_loaded_data', (target) => {
+  console.log('Данные загружены:', target);
+});
+
+Общая структура именования хуков
+ymc/<модуль>/<событие>
+
+ymc — префикс плагина;
+<модуль> — логическая часть/компонент (например: post, filter, ui, ajax);
+<событие> — конкретное действие (например: before_render, after_fetch, init, ready, и т.д.).
+
+Примеры по модулям
+
+1. Модуль: post
+ymc/post/before_fetch         // до запроса постов
+ymc/post/after_fetch          // после получения постов
+ymc/post/render               // при отрисовке постов
+
+2. Модуль: filter
+ymc/filter/change             // при изменении фильтра
+ymc/filter/apply              // при применении фильтров
+ymc/filter/reset              // при сбросе фильтров
+
+3. Модуль: ajax
+ymc/ajax/request_start        // до AJAX-запроса
+ymc/ajax/request_end          // после AJAX-запроса
+ymc/ajax/fail                 // при ошибке запроса
+
+4. Модуль: grid
+ymc/grid/init                 // инициализация сетки
+ymc/grid/before_update        // перед обновлением содержимого
+ymc/grid/after_update         // после обновления
+
+Пример использования:
+ymcHooks.doAction('ymc/filter/apply', currentFilters);
+ymcHooks.addAction('ymc/post/after_fetch', function(posts) {
+    console.log('Новые посты:', posts);
+});
+
+### Hooks JS ###
+
+1.
+ymcHooks.doAction('ymc/grid/cancel_fetch', filter);
+
+Location hook: ymc2\assets\js\frontend\functions\fetchPostsByFilters.js
+Этот хук вызывается перед отправкой запроса на загрузку постов в сетку (grid).
+Он позволяет вмешаться в процесс и изменить поведение загрузки, например — отменить или заблокировать
+fetch-запрос в зависимости от состояния или параметров DOM-элемента сетки.
+
+Использование:
+ymcHooks.doAction('ymc/grid/cancel_fetch', container);
+Где container — DOM-элемент сетки фильтра (например, <div id="ymc-filter-1">), который участвует в запросе.
+
+Добавление обработчика:
+ymcHooks.addAction('ymc/grid/cancel_fetch', function(target) {
+    if (target.classList.contains('ymc-filter-72')) {
+        target.dataset.loadingEnabled = 'false';
+    }
+});
+
+Здесь загрузка отменяется, если у контейнера есть класс ymc-filter-72. Установка data-loading-enabled="false" — способ "пометить"
+DOM-элемент как недопустимый для загрузки.
+
+----------------------------------
+
+2.
+ymcHooks.doAction('ymc/grid/before_update', container);
+ymcHooks.doAction('ymc/grid/before_update_FilterID', container);
+ymcHooks.doAction('ymc/grid/before_update_FilterID_Counter', container);
+
+Location hook: ymc2\assets\js\frontend\utils\fetchFilteredPosts.js
+
+Хук ymc/grid/before_update вызывается непосредственно перед обновлением сетки фильтра — то есть до отправки запроса
+(AJAX fetch) на сервер. Он позволяет вмешаться в процесс и выполнить дополнительную логику, например: модифицировать DOM,
+проверить состояния, запустить анимации, или предотвратить обновление сетки.
+
+Вызов
+ymcHooks.doAction('ymc/grid/before_update', container);
+container — DOM-элемент контейнера сетки (#ymc-1, #ymc-2 и т.д.), в котором будут обновляться посты.
+
+Добавление обработчика:
+ymcHooks.addAction('ymc/grid/before_update_72', function(container) {
+    console.log('Хук работает!', container);
+    // Пример: показать loader
+    target.classList.add('loading');
+});
+
+----------------------------------
+
+3.
+ymcHooks.doAction('ymc/grid/after_update', data, container);
+ymcHooks.doAction('ymc/grid/after_update_FilterID', data, container);
+ymcHooks.doAction('ymc/grid/after_update_FilterID_Counter', data, container);
+
+Location hook: ymc2\assets\js\frontend\utils\fetchFilteredPosts.js
+
+Этот хук вызывается сразу после обновления контента сетки постов — когда новые посты уже вставлены в DOM
+
+| Аргумент    | Тип           | Описание                                                      |
+| ----------- | ------------- | ------------------------------------------------------------- |
+| `container` | `HTMLElement` | DOM-элемент контейнера сетки (например, `.ymc-filter-123`)    |
+| `res.data`  | `Object`      | Ответ сервера с загруженными данными (посты, пагинация и др.) |
+
+Пример использования:
+ymcHooks.addAction('ymc/grid/after_update', function(data, container) {
+    console.log('Посты вставлены в DOM:', container);
+    console.log('Данные ответа от сервера:', data);
+});
+
+----------------------------------
+
+4.
+ymcHooks.doAction('ymc/grid/after_complete', response.status, container);
+ymcHooks.doAction('ymc/grid/after_complete_FilterID', response.status, container);
+ymcHooks.doAction('ymc/grid/after_complete_FilterID_Counter', response.status, container);
+
+response.status — статус ответа HTTP-запроса. Если он равен 200, то запрос завершен успешно.
+container — DOM-элемент контейнера сетки (#ymc-1, #ymc-2 и т.д.), в котором будут обновляться посты.
+
+Пример использования:
+ymcHooks.addAction('ymc/grid/after_complete', function(status, container) {
+    if (status === 200) {
+        console.log('Запрос завершен успешно.');
+    }
+});
+
+----------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
