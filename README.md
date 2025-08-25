@@ -512,8 +512,11 @@ ymcHooks.addAction('ymc/grid/after_complete', function(status, container) {
 #### Popup
 
 `ymcHooks.doAction('ymc/popup/before_open', popup);`
+
 `ymcHooks.doAction('ymc/popup/before_open_filter_id, popup);`
+
 `ymcHooks.doAction('ymc/popup/after_open', popup, data);`
+
 `ymcHooks.doAction('ymc/popup/after_open_filter_id, popup, data);`
 
 These hooks are triggered during the lifecycle of opening a popup in the system. They allow you to run custom code at specific moments before and after the popup opens.
