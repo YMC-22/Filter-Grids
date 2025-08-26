@@ -457,8 +457,11 @@ ymcHooks.addAction('ymc/grid/cancel_fetch', function(filter) {
 });
 ```
 
-`ymcHooks.doAction('ymc/grid/before_update', container);
+`
+ymcHooks.doAction('ymc/grid/before_update', container);
+
 ymcHooks.doAction('ymc/grid/before_update_filter_id', container);
+
 ymcHooks.doAction('ymc/grid/before_update_filter_id_instance_index', container);
 `
 
