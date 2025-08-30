@@ -22,7 +22,10 @@ If necessary, you can **rollback to the previous version** of the plugin at any 
 - **Compatibility**: Requires **WordPress 5.8+** and PHP 7.4 or higher.
 - **Templates**: Custom templates may require minor adjustments for the new rendering engine.
 - **Deprecated Functions**: Some functions have been replaced with new ones. Check the developer documentation.
-- **Safe Rollback**: You can always revert to the previous version without losing your settings.
+- **Safe Rollback**: You can always revert to the previous version without losing your settings. To do this, in the new version of the plugin you should:
+- 1. Go to **Filter & Grids → Settings** in your WordPress admin panel.
+- 2. Enable the option **Legacy Mode**.
+- 3. Click **Save settings**. 
 
 ---
 
