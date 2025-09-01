@@ -1,7 +1,7 @@
 # Upgrade Notice — Filter & Grids
 
 **Version:** 3.0.0  
-**Release date:** 2025-09-07
+**Release date:** 2025-09-10
 
 
 ---
