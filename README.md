@@ -1,4 +1,4 @@
-<img src="/Logo_3.0.0.png" alt="Filter & Grids Logo" width="250" />
+<img src="/Logo_3.0.0.svg" alt="Filter & Grids Logo" width="250" />
 
 # YMC Filter Grids 
 
