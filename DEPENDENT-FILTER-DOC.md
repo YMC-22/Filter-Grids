@@ -41,6 +41,7 @@ This option allows you to manually define which terms of the next taxonomy in th
 
 This ensures that the dependent chain is always explicit and predictable.  
 Leaving the field empty does not mean "show all terms" — it means that this taxonomy is not connected to the current term.
+
 ---
 
 ### 4. Root Source
