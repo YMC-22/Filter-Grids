@@ -32,8 +32,15 @@ Below are all the key options available for configuring the Dependent Filter.
 - Example:
   - Brand: *BMW* → Related Models: *X5, X6*  
   - Brand: *Audi* → Related Models: *A4, A6*  
-- If no related terms are defined, the filter falls back to the **hierarchy** (`parent → child`).
+  - If no related terms are defined, the filter falls back to the **hierarchy** (`parent → child`).
+  
+This option allows you to manually define which terms of the next taxonomy in the sequence should be displayed when a user selects a specific term.
 
+- **If related terms are selected** → only the chosen terms will be displayed in the next dropdown.
+- **If no related terms are selected** → the system will not display any terms for this step. The dropdown will show a placeholder **“No terms available”**.
+
+This ensures that the dependent chain is always explicit and predictable.  
+Leaving the field empty does **not** mean "show all terms" — it means that this taxonomy is not connected to the current term.
 ---
 
 ### 4. Root Source
