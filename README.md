@@ -572,7 +572,7 @@ Usage Example:
 ```js
 ymcHooks.addAction('ymc/grid/after_update_72', function(data, container) {
   const grid = new MagicGrid({
-      container: container,
+      container: container.querySelector('.posts-grid'),
       static: false,
       items: data.posts_count,
       gutter: 30,
