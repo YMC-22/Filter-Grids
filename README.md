@@ -582,6 +582,10 @@ ymcHooks.addAction('ymc/grid/after_update_72', function(data, container) {
       animate: true,
       center: true
      });
+
+  grid.listen();
+  grid.positionItems();
+  
   });
 });
 ```
