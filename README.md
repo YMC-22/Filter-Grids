@@ -583,8 +583,8 @@ ymcHooks.addAction('ymc/grid/after_update_72', function(data, container) {
       center: true
      });
 
-  grid.listen();
-  grid.positionItems();
+     grid.listen();
+     grid.positionItems();
   
   });
 });
