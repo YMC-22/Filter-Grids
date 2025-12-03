@@ -584,8 +584,7 @@ ymcHooks.addAction('ymc/grid/after_update_72', function(data, container) {
      });
 
      grid.listen();
-     grid.positionItems();
-  
+     grid.positionItems();  
   });
 });
 ```
