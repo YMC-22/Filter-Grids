@@ -203,10 +203,11 @@ do_action('ymc/filter/layout/right/after_{filter_id}_{$instance_index}');
 
 #### Available Actions Inside the Filter
 ```php
-do_action('ymc/filter/layout/inner/before_{$taxonomy_slug}');
-do_action('ymc/filter/layout/inner/after_{$taxonomy_slug}');
+do_action('ymc/filter/layout/inner/before_{$taxonomy_slug}_{filter_id}');
+do_action('ymc/filter/layout/inner/after_{$taxonomy_slug}_{filter_id}');
 ```
 - `string $taxonomy_slug`:  represents the taxonomy slug.
+- `string filter_id`:  represents the filter ID.
 
 It is used to generate taxonomy-specific action hooks. Used for Default filter.
 
