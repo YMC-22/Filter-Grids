@@ -1,4 +1,4 @@
-<img src="/Logo_3.0.0.svg" alt="Filter & Grids Logo" width="250" />
+<img src="/Logo_3.0.0.png" alt="Filter & Grids Logo" width="250" />
 
 # YMC Filter Grids 
 
@@ -201,6 +201,14 @@ do_action('ymc/filter/layout/right/after_{filter_id}');
 do_action('ymc/filter/layout/right/after_{filter_id}_{$instance_index}');
 ```
 
+#### Available Actions Inside the Filter
+```php
+do_action("ymc/filter/layout/inner/before_". $taxonomy_slug);
+do_action("ymc/filter/layout/inner/after_". $taxonomy_slug);
+```
+- `string $taxonomy_slug`:  represents the taxonomy slug.
+
+It is used to generate taxonomy-specific action hooks. Used for Default filter.
 
 ### Pagination Filters
 `ymc/pagination/prev_text`
@@ -583,8 +591,8 @@ ymcHooks.addAction('ymc/grid/after_update_72', function(data, container) {
       center: true
      });
 
-     grid.listen();
-     grid.positionItems();  
+      grid.listen();
+      grid.positionItems();    
   });
 });
 ```
