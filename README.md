@@ -593,9 +593,9 @@ ymcHooks.addAction('ymc/grid/after_update_72', function(data, container) {
      });
 
       grid.listen();
-      grid.positionItems();    
+      grid.positionItems(); 
   });
-});
+
 ```
 To correctly display the grid, set styles for the post card, for example:
 ```css
