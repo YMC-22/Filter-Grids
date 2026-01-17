@@ -5,7 +5,7 @@
 **Filter & Grids** is a powerful and flexible WordPress plugin that allows you to easily filter and display your posts, custom post types, and other content in beautifully designed grid layouts.  
 With an intuitive interface and customizable filters, you can create dynamic, responsive, and visually appealing content grids without touching a single line of code.
 
-### Key Features  
+### Key Features
 - **Advanced filtering** — filter posts by categories, tags, taxonomies, custom fields, and more.
 - **Multiple grid layouts** — choose from a variety of pre-designed layouts or create your own.
 - **Responsive design** — works perfectly on desktop, tablet, and mobile devices.
