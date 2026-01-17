@@ -22,7 +22,7 @@ Whether you’re building a portfolio, a product catalog, or a news feed, **Filt
 
 **Filter & Grids** is a powerful and flexible WordPress plugin that allows you to easily filter and display posts, custom post types, and other content in beautifully designed grid layouts.
 
----
+--- 
 
 ## 📢 Upgrade Notice
 ⚠️ **Important:** Before updating to the latest version, please read the [Upgrade Notice](UPGRADE-NOTICE.md) for important information about compatibility, migration steps, and potential changes that might affect your site.
