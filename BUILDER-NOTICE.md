@@ -71,10 +71,7 @@ Use the **Move Up/Down** buttons to reorder elements. The live preview updates i
 * **Responsiveness**: While the builder is flexible, try to limit nesting (Rows inside Columns) to 2-3 levels to ensure your layout remains mobile-friendly.
 * **Backups**: Before performing major structural changes on an existing layout, it is recommended to save a draft of your post.
 
----
 
-## 🔗 Resources
-- **Support**: [Open an Issue](https://github.com/your-repo/issues)
-- **Tutorials**: [Video Guides Coming Soon]
+
 
 
