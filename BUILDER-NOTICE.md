@@ -33,8 +33,6 @@ To build effectively, keep this "Tree" structure in mind:
 2.  **Column**: Sits inside a Row. You can place multiple columns side-by-side.
 3.  **Element**: The content (Images, Headings, Buttons) that lives inside a Column.
 
-
-
 ---
 
 ## 🖱️ Interface & Actions
