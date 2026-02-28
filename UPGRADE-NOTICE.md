@@ -1,4 +1,4 @@
-# Upgrade Notice — Filter & Grids
+# Upgrade Notice — YMC Filter
 
 **Version:** 3.0.0
 **Release date:** 2025-09-03
