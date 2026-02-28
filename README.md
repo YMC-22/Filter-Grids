@@ -1,8 +1,8 @@
-<img src="/Logo_3.0.0.svg" alt="Filter & Grids Logo" width="250" />
+<img src="/Logo_3.0.0.svg" alt="YMC Filter Logo" width="250" />
 
-# YMC Filter Grids 
+# YMC Filter 
 
-**Filter & Grids** is a powerful and flexible WordPress plugin that allows you to easily filter and display your posts, custom post types, and other content in beautifully designed grid layouts.  
+**YMC Filter** is a powerful and flexible WordPress plugin that allows you to easily filter and display your posts, custom post types, and other content in beautifully designed grid layouts.  
 With an intuitive interface and customizable filters, you can create dynamic, responsive, and visually appealing content grids without touching a single line of code.
 
 ### Key Features
@@ -12,17 +12,17 @@ With an intuitive interface and customizable filters, you can create dynamic, re
 - **Ajax-powered loading** — load filtered results without reloading the page.
 - **Easy integration** — insert grids anywhere with a shortcode or block editor.
 
-Whether you’re building a portfolio, a product catalog, or a news feed, **Filter & Grids** gives you full control over how your content is displayed and how your visitors interact with it.
+Whether you’re building a portfolio, a product catalog, or a news feed, **YMC Filter** gives you full control over how your content is displayed and how your visitors interact with it.
 
 ---
 
-# Filter & Grids
+# YMC Filter
 
 [![Version](https://img.shields.io/badge/version-3.0.0-blue.svg)](UPGRADE-NOTICE.md)
 
-**Filter & Grids** is a powerful and flexible WordPress plugin that allows you to easily filter and display posts, custom post types, and other content in beautifully designed grid layouts.
+**YMC Filter** is a powerful and flexible WordPress plugin that allows you to easily filter and display posts, custom post types, and other content in beautifully designed grid layouts.
 
---- 
+---
 
 ## 📢 Upgrade Notice
 ⚠️ **Important:** Before updating to the latest version, please read the [Upgrade Notice](UPGRADE-NOTICE.md) for important information about compatibility, migration steps, and potential changes that might affect your site.
@@ -80,7 +80,7 @@ This documentation describes available **WordPress filter hooks** for customizin
 
 ## 📘 Introduction
 
-YMC Filter Grids provides flexible rendering of post filters with options to extend, override, or manipulate components using WordPress native `apply_filters()` functionality.
+YMC Filter provides flexible rendering of post filters with options to extend, override, or manipulate components using WordPress native `apply_filters()` functionality.
 
 This document helps developers understand where and how to hook into the plugin's logic.
 
@@ -91,8 +91,8 @@ This document helps developers understand where and how to hook into the plugin'
 To use a filter hook, add the following to your theme or plugin:
 
 - Activate Plugin or upload the entire 'ymc-smart-filter' folder to the '/wp-content/plugins/' directory.
-- Add new Filter & Grids
-- Copy Filter & Grids shortcode and paste to any page or post
+- Add new YMC Filter
+- Copy YMC Filter shortcode and paste to any page or post
 - Set setting for each post
 
 
@@ -593,9 +593,9 @@ ymcHooks.addAction('ymc/grid/after_update_72', function(data, container) {
      });
 
       grid.listen();
-      grid.positionItems(); 
+      grid.positionItems();    
   });
-
+});
 ```
 To correctly display the grid, set styles for the post card, for example:
 ```css
