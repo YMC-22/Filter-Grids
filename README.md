@@ -399,7 +399,7 @@ return $output;
 }, 10, 5);
 ```
 
-### Custom Carousel Layout
+### Custom Carousel Layout 
 Inject or override custom carousel layout.
 ```php
 apply_filters('ymc/post/carousel/content/custom', $output, $post_id, $filter_id, $popup_class, $post_term_settings);
