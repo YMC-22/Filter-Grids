@@ -989,7 +989,7 @@ add_filter('ymc/filter/query/wp/allowed_callbacks', function($callbacks) {
  * }
  * }
  *
- * @return array Modified or extended WP_Query arguments.
+ * @return array Modified or extended WP_Query arguments. 
  */
 function custom_query_modifier( $args ) {
 
