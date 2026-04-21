@@ -1,6 +1,6 @@
 <img src="/Logo_3.0.0.svg" alt="YMC Filter Logo" width="250" />
 
-# YMC Filter 
+# YMC Filter Grids 
 
 **YMC Filter** is a powerful and flexible WordPress plugin that allows you to easily filter and display your posts, custom post types, and other content in beautifully designed grid layouts.  
 With an intuitive interface and customizable filters, you can create dynamic, responsive, and visually appealing content grids without touching a single line of code.
@@ -399,7 +399,6 @@ return $output;
 }, 10, 5);
 ```
 
-### Custom Carousel Layout 
 Inject or override custom carousel layout.
 ```php
 apply_filters('ymc/post/carousel/content/custom', $output, $post_id, $filter_id, $popup_class, $post_term_settings);
@@ -976,17 +975,29 @@ add_filter('ymc/filter/query/wp/allowed_callbacks', function($callbacks) {
  * Callback function to modify WP_Query arguments.
  *
  * @param array $args {
- *     An associative array of context data passed to the callback.
+ * An associative array of context data passed to the callback.
  *
- *     @type array  $post_type List of post types to query.
- *     @type array  $taxonomy  List of taxonomy slugs relevant to the query.
- *     @type array  $terms     List of term IDs to filter by.
- *     @type int    $page_id   Current page ID where the query is being executed.
+ * @type array  $post_type  List of post types to query.
+ * @type array  $taxonomy   List of taxonomy slugs relevant to the query.
+ * @type array  $terms      List of term IDs to filter by.
+ * @type int    $page_id    Current page ID where the query is being executed.
+ * @type array  $extra_args {
+ * Optional. An associative array of additional (secondary) parameters.
+ *
+ * @type int|string $data_from Start date/timestamp for custom filtering.
+ * @type int|string $data_to   End date/timestamp for custom filtering.
+ * }
  * }
  *
  * @return array Modified or extended WP_Query arguments.
  */
 function custom_query_modifier( $args ) {
+
+   // Optional
+   // $data_from = $args['extra_args']['data_from'] ?? null;
+   // $data_to   = $args['extra_args']['data_to']   ?? null;
+   // $page_id   = $args['page_id'];
+
     return [
         'post_type'       => ['post', 'book'],
         'posts_per_page'  => 10,
