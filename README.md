@@ -671,6 +671,29 @@ Usage Example:
 YMCFilterGrid.init('#ymc-filter-1');
 ```
 
+`.create(container)`
+
+Creates a new independent instance of the YMCFilterGrid for the specified container.
+
+Unlike `.init()`, which uses a global singleton instance, this method allows you to work with multiple grids on the same page without state conflicts.
+
+Parameters:
+- `container (string)`: The selector for the container element containing the filtered post grid.
+
+Returns:
+- `(object)`: A new YMCFilterGrid instance.
+
+Usage Example:
+```js
+const grid1 = YMCFilterGrid.create('#ymc-filter-1');
+const grid2 = YMCFilterGrid.create('#ymc-filter-2');
+
+grid1.filterByTerm('category', '101');
+grid2.filterByTerm('author_book', '10');
+```
+The `.init()` method uses a shared global instance. If you are working with multiple grids on the same page, it is recommended to use `.create()` to avoid state overwriting (e.g. filters or container reference).
+
+
 `YMCFilterGrid.filterByTerm(taxonomy, termId, sendRequest = true)`
 
 Filters the grid by a specific taxonomy and term ID.
@@ -989,7 +1012,7 @@ add_filter('ymc/filter/query/wp/allowed_callbacks', function($callbacks) {
  * }
  * }
  *
- * @return array Modified or extended WP_Query arguments. 
+ * @return array Modified or extended WP_Query arguments.
  */
 function custom_query_modifier( $args ) {
 
