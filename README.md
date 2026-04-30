@@ -959,6 +959,159 @@ YMCFilterGrid.openFilterPopup(55);
 ```
 
 
+`YMCFilterGrid.setParams(params, options = {})`
+
+The setParams() method allows you to update or add custom parameters directly to the grid's internal data-params attribute.
+It is a low-level method that provides full control over query parameters used by WP_Query.
+
+This method is useful when you need to dynamically modify query arguments beyond the predefined API methods.
+Parameters:
+- `params (object)`: An object of key-value pairs to merge into the current query parameters.
+- `options (object) (optional)`: An object of key-value pairs to merge into the current query parameters.
+- `sendRequest (boolean)`: Whether to send an AJAX request after updating parameters. Default is true.
+- `resetPage (boolean)`: Whether to reset pagination to the first page (paged: 1). Default is false.
+
+Note:
+This method directly modifies the internal query state and should be used carefully. It is recommended for advanced use cases where built-in filtering methods are not sufficient.
+
+Usage Example:
+```js
+// Update current page
+YMCFilterGrid.setParams({ paged: 2 });
+
+// Change posts per page
+YMCFilterGrid.setParams({ posts_per_page: 12 });
+
+// Apply custom ordering
+YMCFilterGrid.setParams({
+  order: 'DESC',
+  orderby: 'date'
+});
+
+// Add custom meta query
+YMCFilterGrid.setParams({
+  meta_query: [
+    {
+      key: 'price',
+      value: 100,
+      compare: '>=',
+      type: 'NUMERIC'
+    }
+  ]
+});
+
+// Update without triggering a request
+YMCFilterGrid.setParams(
+  { paged: 3 },
+  { sendRequest: false }
+);
+
+// Reset pagination when updating parameters
+YMCFilterGrid.setParams(
+  { search: 'WordPress' },
+  { resetPage: true }
+);
+
+// Combine multiple parameters
+YMCFilterGrid.setParams(
+  {
+    search: 'plugin',
+    posts_per_page: 6,
+    order: 'ASC'
+  },
+  { resetPage: true }
+);
+
+```
+
+`YMCFilterGrid.removeParams(keys, options = {})`
+
+The removeParams() method allows you to remove one or multiple parameters from the grid's internal data-params attribute.
+It is useful for clearing specific filters or query arguments without resetting the entire filter state.
+
+Parameters:
+- `keys (string|array)`: A parameter key or an array of keys to remove from the current query.
+- `options (object) (optional)`: 
+- `sendRequest (boolean):`: Whether to send an AJAX request after removing parameters. Default is true.
+- `resetPage (boolean):`: Whether to reset pagination to the first page (paged: 1). Default is false.
+
+Note:
+This method only removes specified parameters and does not affect other active filters.
+Use it for fine-grained control over query state instead of resetting the entire filter configuration.
+
+Usage Examples:
+```js
+// Remove a single parameter
+YMCFilterGrid.removeParams('search');
+
+// Remove multiple parameters
+YMCFilterGrid.removeParams(['search', 'meta_query']);
+
+// Remove parameter and reset pagination
+YMCFilterGrid.removeParams(
+  'search',
+  { resetPage: true }
+);
+
+// Remove parameters without triggering a request
+YMCFilterGrid.removeParams(
+  ['search', 'terms'],
+  { sendRequest: false }
+);
+
+// Clear sorting parameters
+YMCFilterGrid.removeParams([
+  'post_order_by',
+  'post_order',
+  'order_meta_key',
+  'order_meta_value'
+]);
+
+// Remove meta query filters
+YMCFilterGrid.removeParams('meta_query');
+```
+
+`YMCFilterGrid.resetFilter(sendRequest = true)`
+
+The resetFilter() method resets the grid to its default (initial) state by clearing all active filters and restoring base query parameters.
+It ensures that all filtering-related parameters are returned to their default values and reloads the grid.
+
+This method is useful when you need a full reset similar to a “Reset All Filters” button.
+
+Note:
+This method clears all filtering-related parameters such as taxonomies, terms, meta queries, search, sorting, and more.
+Pagination is automatically reset to the first page (paged: 1).
+Unlike removeParams(), this method performs a full reset rather than removing specific keys.
+
+Parameters:
+- `sendRequest (boolean)`: Whether to send an AJAX request after resetting filters. Default is true.
+
+Usage Examples:
+```js
+// Reset all filters
+YMCFilterGrid.resetFilter();
+
+// Reset without triggering a request
+YMCFilterGrid.resetFilter(false);
+
+// Reset filters on a specific instance
+const grid = YMCFilterGrid.create('#ymc-filter-1');
+grid.filterByTerm('category', '101');
+
+// Reset back to default state
+grid.resetFilter();
+
+// Reset after custom parameters were applied
+YMCFilterGrid.setParams({
+  search: 'WordPress',
+  posts_per_page: 5
+});
+
+// Reset everything
+YMCFilterGrid.resetFilter();
+
+```
+
 
 
 ### Advanced Developer Hooks
