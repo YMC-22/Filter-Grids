@@ -693,6 +693,35 @@ grid2.filterByTerm('author_book', '10');
 ```
 The `.init()` method uses a shared global instance. If you are working with multiple grids on the same page, it is recommended to use `.create()` to avoid state overwriting (e.g. filters or container reference).
 
+`YMCFilterGrid.version`
+
+The version property provides the current version of the YMCFilterGrid JavaScript API.
+This value is useful for debugging, compatibility checks, and ensuring that your integration works with the expected API version.
+
+Notes
+The API version is independent from the WordPress plugin version.
+It reflects only the JavaScript API layer (YMCFilterGrid).
+The version value is shared across all instances created via YMCFilterGrid.create().
+
+
+Usage Example:
+```js
+// Output: "3.0.1"
+console.log(YMCFilterGrid.version);
+```
+
+`YMCFilterGrid.getVersion()`
+
+The getVersion() method returns the current version of the YMCFilterGrid API.
+This method is useful when working with instances or when you want to access the version in a consistent
+
+Usage Example:
+```js
+// Output: "3.0.1"
+const grid = YMCFilterGrid.create('#ymc-filter-1');
+console.log(grid.getVersion());
+```
+
 
 `YMCFilterGrid.filterByTerm(taxonomy, termId, sendRequest = true)`
 
@@ -1134,13 +1163,6 @@ YMCFilterGrid.setExtraArgs(
 
 The resetFilter() method resets the grid to its default (initial) state by clearing all active filters and restoring base query parameters.
 It ensures that all filtering-related parameters are returned to their default values and reloads the grid.
-
-This method is useful when you need a full reset similar to a “Reset All Filters” button.
-
-Note:
-This method clears all filtering-related parameters such as taxonomies, terms, meta queries, search, sorting, and more.
-Pagination is automatically reset to the first page (paged: 1).
-Unlike removeParams(), this method performs a full reset rather than removing specific keys.
 
 Parameters:
 - `sendRequest (boolean)`: Whether to send an AJAX request after resetting filters. Default is true.
