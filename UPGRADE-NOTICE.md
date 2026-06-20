@@ -56,9 +56,7 @@ If necessary, you can **rollback to the previous version** of the plugin at any 
 
 ---
 
-Thank you for using **YMC Filter** ❤️  
-We’ve kept your favorite features, added powerful new tools, and made sure you can always roll back if needed.  
-
-
+Thanks for using **YMC Filter** ❤️  
+We’ve kept your favorite features, added powerful new tools, and made sure you can always roll back if needed. 
 
 
