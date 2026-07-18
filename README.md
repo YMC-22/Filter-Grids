@@ -283,6 +283,43 @@ add_filter('ymc/popup/custom_layout_72', function ($content, $post_id) {
 }, 10, 2);
 ```
 
+`ymc/popup/guest_can_view_post` 
+
+Allow guest users to override the default popup access check for non-public posts.
+
+By default, guests can open popups only for publicly viewable posts (`publish`). This filter allows developers to override that behavior and grant access to additional post statuses (for example `future`) when required.
+
+> **Note:** Use this filter carefully. Returning `true` may expose non-public post content to unauthenticated visitors.
+
+```php
+apply_filters('ymc/popup/guest_can_view_post', $allowed, $post, $filter_id, $instance_index, $request);
+apply_filters('ymc/popup/guest_can_view_post_{filter_id}', $allowed, $post, $filter_id, $instance_index, $request);
+apply_filters('ymc/popup/guest_can_view_post_{filter_id}_{instance_index}', $allowed, $post, $filter_id, $instance_index, $request);
+```
+
+Parameters:
+
+- `bool $allowed`: Whether the guest is allowed to view the popup. Defaults to the result of `is_post_publicly_viewable()`.
+- `WP_Post $post`: The current post object.
+- `int $filter_id`: The filter (grid) ID.
+- `int $instance_index`: The filter instance counter.
+- `WP_REST_Request $request`: The current REST API request object.
+
+Usage Example:
+
+```php
+add_filter( 'ymc/popup/guest_can_view_post_72', function( $allowed, $post ) {
+
+	if ( $post->post_status === 'future' ) {
+		return true;
+	}
+
+	return $allowed;
+
+}, 10, 2 );
+```
+
+
 ### Custom Filter Layout
 Inject or override custom filter layout.
 ```php
