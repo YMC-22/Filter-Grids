@@ -1046,7 +1046,7 @@ Usage Example:
 YMCFilterGrid.setParams({ paged: 2 });
 
 // Change posts per page
-YMCFilterGrid.setParams({ posts_per_page: 12 });
+YMCFilterGrid.setParams({ per_page: 12 });
 
 // Apply custom ordering
 YMCFilterGrid.setParams({
